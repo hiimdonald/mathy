@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-5 g-4">
+        {% if request.path != url_for('division') %}
+            {% for i, problem in enumerate(problems) %}
+                <div class="col">
+                    <div class="card h-100">
+                        <div class="card-header fw-bold">{{ i + 1 }}</div>
+                            <div class="card-body mx-auto">
+                                <div class="row">
+                                    <div class="col">
+                                        <p class="card-text text-end">{{ problem.operand1 }}</p>
+                                    </div> 
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <p class="card-text text-end">{{ problem.operator }}</p>
+                                    </div>
+                                    <div class="col">
+                                        <p class="card-text text-end">{{ problem.operand2 }}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <hr class="border border-primary border-2 opacity-100 m-1 p-0">
+                                    <div class="col">
+                                        
+                                        <!-- <p class="card-text text-end">{{ problem.answer }}</p> -->
+                                    </div> 
+                                </div>
+                                
+                            </div>
+                    </div>
+                </div>
+            {% endfor %}
+
+        {% else %}
+            {% for i, problem in enumerate(problems) %}
+                <div class="col">
+                    <div class="card h-100">
+                        <div class="card-header fw-bold">{{ i + 1 }}</div>
+                            <div class="card-body mx-auto">
+                                <div class="row">
+                                    <div class="col">
+                                        <p class="card-text text-end">{{ problem.operand1 }}</p>
+                                    </div> 
+                                    <div class="col">
+                                        <p class="card-text">{{ problem.operator }}</p>
+                                    </div>
+                                    <div class="col">
+                                        <p class="card-text">{{ problem.operand2 }}</p>
+                                    </div>
+                                    <div class="col">
+                                        <p class="card-text">=</p>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                    </div>
+                </div>
+            {% endfor %}
+
+        {% endif %}
+    </div>
+</div>
+
+<style>
+@media print {
+  .card {
+    page-break-inside: avoid;
+    width: 20%;
+    margin: 1%;
+    float: left;
+  }
+}
+</style>
+
+{% endblock %}
