@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container-fluid">
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-5 g-4">
-        {% if request.path != url_for('division') %}
+<div class="container">
+    {% if request.path == url_for('addition') or request.path == url_for('multiplication') %}
+        <div class="row row-cols-6 row-cols-md-4 row-cols-lg-6 g-2">
             {% for i, problem in enumerate(problems) %}
                 <div class="col">
-                    <div class="card h-100">
+                    <div class="card h-100 w-100">
                         <div class="card-header fw-bold">{{ i + 1 }}</div>
-                            <div class="card-body mx-auto">
+                            <div class="card-body mx-auto pb-5">
                                 <div class="row">
                                     <div class="col">
                                         <p class="card-text text-end">{{ problem.operand1 }}</p>
@@ -23,57 +23,90 @@
                                     </div>
                                 </div>
                                 <div class="row">
+                                    
                                     <hr class="border border-primary border-2 opacity-100 m-1 p-0">
-                                    <div class="col">
-                                        
-                                        <!-- <p class="card-text text-end">{{ problem.answer }}</p> -->
+                                    <div class="col">   
+                                        <!-- <p class="card-text text-end pb-0">{{ problem.answer }}</p> -->
                                     </div> 
                                 </div>
-                                
                             </div>
                     </div>
                 </div>
             {% endfor %}
 
-        {% else %}
+    <!-- division -->
+    {% else %}
+    <div>
+        <h1> Number of questions: {{ problems | length }} </h1>
+
+    </div>
+    
+
+        <div class="row row-cols-4 row-cols-md-4 row-cols-lg-6 g-2">
             {% for i, problem in enumerate(problems) %}
+
                 <div class="col">
-                    <div class="card h-100">
+                    <div class="card h-100 w-100">
+                        <div class="card-header fw-bold">{{ i + 1 }}</div>
+                            <div class="card-body mx-auto pb-0">
+                                <table class="table table-borderless table-sm d-flex">
+                                    <tbody>
+                                      <tr>
+                                        <td width="30"">
+                                            <p class="card-text text-end">{{ problem.operand1 }}</p>
+                                        </td>
+                                        <td width="5">
+                                            <p class="card-text text-end">{{ problem.operator }}</p>
+
+                                        </td>
+                                        <td width="30">
+                                            <p class="card-text text-start">{{ problem.operand2 }}</p>
+                                        </td>
+                                        <td width="5">
+                                            <p class="card-text">=</p>
+                                        </td>
+                                        <td width="30">
+                                            <p class="card-text text-start">_____</p>
+                                        </td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                            </div>
+                    </div>
+                </div>
+
+
+
+                <!-- <div class="col">
+                    <div class="card h-100 w-100">
                         <div class="card-header fw-bold">{{ i + 1 }}</div>
                             <div class="card-body mx-auto">
-                                <div class="row">
-                                    <div class="col">
-                                        <p class="card-text text-end">{{ problem.operand1 }}</p>
+                                <div class="row align-items-center">
+                                    <div class="col p-0">
+                                        <p class="card-text">{{ problem.operand1 }}</p>
                                     </div> 
                                     <div class="col">
                                         <p class="card-text">{{ problem.operator }}</p>
                                     </div>
-                                    <div class="col">
+                                    <div class="col p-0">
                                         <p class="card-text">{{ problem.operand2 }}</p>
                                     </div>
                                     <div class="col">
                                         <p class="card-text">=</p>
                                     </div>
+                                    <div class="col p-0">
+                                        <p class="ms-auto mt-auto mb-0 ">_____</p>
+                                    </div>
                                 </div>
                                 
                             </div>
                     </div>
-                </div>
+                </div> -->
             {% endfor %}
 
         {% endif %}
-    </div>
+         </div>
 </div>
 
-<style>
-@media print {
-  .card {
-    page-break-inside: avoid;
-    width: 20%;
-    margin: 1%;
-    float: left;
-  }
-}
-</style>
 
 {% endblock %}

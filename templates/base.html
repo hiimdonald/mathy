@@ -4,13 +4,13 @@
     <title>{% block title %}{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-print.min.css') }}" media="print" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/print.css') }}" media="print">
 
   </head>
   <body>
     <div class="container">
-        <nav class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+        <nav class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom d-print-none">
           <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
             <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
             <span class="fs-4">Mathy</span>
@@ -32,7 +32,7 @@
           </ul>
         </nav>
 
-    <main class="container my-5">
+    <main class="container">
       {% block content %}{% endblock %}
     </main>
 
