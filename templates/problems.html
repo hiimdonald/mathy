@@ -1,15 +1,15 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container">
+<div class="container pb-5">
     <div>
         <h1> Number of questions: {{ problems | length }} </h1>
     </div>
 
     {% if request.path == url_for('addition') or request.path == url_for('multiplication') %}
-        <div class="row row-cols-6 row-cols-md-6 row-cols-lg-6 g-2">
+        <div class="row g-2">
             {% for i, problem in enumerate(problems) %}
-                <div class="col">
+                <div class="col-2 col-sm-6 col-md-1 col-lg-1">
                     <div class="card h-100 w-100">
                         <div class="card-header fw-bold">{{ i + 1 }}</div>
                             <div class="card-body mx-auto pb-4 pt-2">
@@ -17,23 +17,24 @@
                                     <tbody>
                                     <tr>
                                         <td scope="col"></td>
-                                        <td class="text-end" width="40">
+                                        <td scope="col" class="text-end" width="40">
                                             <p class="card-text">{{ problem.operand1 }}</p>
-
                                         </td>
+                                        <td scope="col"></td>
                                     </tr>
                                     <tr>
-                                    <td class="text-end" cope="col" width="5">
-                                        {{ problem.operator }}
-                                    </td>
-                                    <td class="text-end" scope="col" width="35">
-                                        <p class="card-text">{{ problem.operand2 }}</p>
-                                    </td>
+                                        <td scope="col" class="text-end pl-2" cope="col" width="10">
+                                            {{ problem.operator }}
+                                        </td>
+                                        <td scope="col" class="text-end" scope="col">
+                                            <p class="card-text">{{ problem.operand2 }}</p>
+                                        </td>
+                                        <td scope="col"></td>
                                     </tr>
                                     <tr>
-                                    <td class="text-center" scope="col" colspan="2" width="20">
-                                        <hr width="60" class="border border-primary border-2 opacity-100 m-0 p-0">
-                                    </td>
+                                        <td class="text-center" scope="col" colspan="3" width="20">
+                                            <hr width="60" class="border border-primary border-2 opacity-100 m-0 p-0">
+                                        </td>
                                     </tr>
                                     </tbody>
                                 </table>
