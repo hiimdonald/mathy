@@ -2,33 +2,42 @@
 
 {% block content %}
 <div class="container">
+    <div>
+        <h1> Number of questions: {{ problems | length }} </h1>
+    </div>
+
     {% if request.path == url_for('addition') or request.path == url_for('multiplication') %}
-        <div class="row row-cols-6 row-cols-md-4 row-cols-lg-6 g-2">
+        <div class="row row-cols-6 row-cols-md-6 row-cols-lg-6 g-2">
             {% for i, problem in enumerate(problems) %}
                 <div class="col">
                     <div class="card h-100 w-100">
                         <div class="card-header fw-bold">{{ i + 1 }}</div>
-                            <div class="card-body mx-auto pb-5">
-                                <div class="row">
-                                    <div class="col">
-                                        <p class="card-text text-end">{{ problem.operand1 }}</p>
-                                    </div> 
-                                </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <p class="card-text text-end">{{ problem.operator }}</p>
-                                    </div>
-                                    <div class="col">
-                                        <p class="card-text text-end">{{ problem.operand2 }}</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    
-                                    <hr class="border border-primary border-2 opacity-100 m-1 p-0">
-                                    <div class="col">   
-                                        <!-- <p class="card-text text-end pb-0">{{ problem.answer }}</p> -->
-                                    </div> 
-                                </div>
+                            <div class="card-body mx-auto pb-4 pt-2">
+                                <table class="table table-borderless table-sm d-flex">
+                                    <tbody>
+                                    <tr>
+                                        <td scope="col"></td>
+                                        <td class="text-end" width="40">
+                                            <p class="card-text">{{ problem.operand1 }}</p>
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    <td class="text-end" cope="col" width="5">
+                                        {{ problem.operator }}
+                                    </td>
+                                    <td class="text-end" scope="col" width="35">
+                                        <p class="card-text">{{ problem.operand2 }}</p>
+                                    </td>
+                                    </tr>
+                                    <tr>
+                                    <td class="text-center" scope="col" colspan="2" width="20">
+                                        <hr width="60" class="border border-primary border-2 opacity-100 m-0 p-0">
+                                    </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+
                             </div>
                     </div>
                 </div>
@@ -36,12 +45,6 @@
 
     <!-- division -->
     {% else %}
-    <div>
-        <h1> Number of questions: {{ problems | length }} </h1>
-
-    </div>
-    
-
         <div class="row row-cols-4 row-cols-md-4 row-cols-lg-6 g-2">
             {% for i, problem in enumerate(problems) %}
 
@@ -52,7 +55,7 @@
                                 <table class="table table-borderless table-sm d-flex">
                                     <tbody>
                                       <tr>
-                                        <td width="30"">
+                                        <td width="40"">
                                             <p class="card-text text-end">{{ problem.operand1 }}</p>
                                         </td>
                                         <td width="5">
@@ -65,8 +68,10 @@
                                         <td width="5">
                                             <p class="card-text">=</p>
                                         </td>
-                                        <td width="30">
-                                            <p class="card-text text-start">_____</p>
+                                        <td width="50" class="align-bottom">
+                                            <!-- <p class="card-text text-start">_____</p> -->
+                                            <hr class="border border-primary border-2 opacity-100 m-0 p-0">
+
                                         </td>
                                       </tr>
                                     </tbody>
