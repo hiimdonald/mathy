@@ -1,0 +1,7 @@
+
+
+@media print {
+  .print-break {
+    break-after: page;
+  }
+}

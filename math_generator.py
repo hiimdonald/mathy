@@ -28,8 +28,7 @@ def generate_multiplication_problem():
     return problem
 
 def generate_division_problem():
-    index = 0
-    while index < 19:
+    while True:
         num1 = random.randint(1, 144)
         num2 = random.randint(1, 12)
         if num1 >= num2 and (num1%num2) == 0 and ((num1/num2) <= 12):
@@ -39,5 +38,4 @@ def generate_division_problem():
                 "operator": "÷",
                 "answer": num1 / num2
             }
-            index += 1
             return problem

@@ -1,0 +1,56 @@
+{% for i, problem in enumerate(problems) %}
+<!-- <div class="col-2 col-sm-2 col-md-4 col-lg-1"> -->
+<div class="col g-2">
+  <div class="card" style="width: 8rem">
+    <div class="card-header fw-bold"># {{ i + 1 }}</div>
+    <div class="card-body mx-auto pb-0 pt-2">
+      <table class="table table-borderless table-sm d-flex">
+          <tr>
+            <td scope="col"></td>
+            <td scope="col" class="text-end" width="40">
+              <p class="card-text">{{ problem.operand1 }}</p>
+            </td>
+            <td scope="col"></td>
+          </tr>
+          <tr>
+            <td scope="col" class="text-end pl-2" cope="col" width="10">
+              {{ problem.operator }}
+            </td>
+            <td scope="col" class="text-end" scope="col">
+              <p class="card-text">{{ problem.operand2 }}</p>
+            </td>
+          </tr>
+          <tr>
+            <td class="text-center" scope="col" colspan="3" width="20">
+              <hr
+                width="60"
+                class="border border-primary border-2 opacity-100 m-0 p-0"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td td class="text-center" scope="col" colspan="3" width="20">
+                <input type="text" class="form-control" id="validationDefault05" required>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+    
+        <div x-data="{ isOpen: false }">
+            <!-- this component can be shown/hidden using a `toggle` event  -->
+            <div
+              x-show="isOpen"
+              x-on:toggle.window="isOpen = !isOpen"
+              role="alert"
+              >     
+              <div class="card-footer text-muted">                    
+                <p class="card-text text-center">{{ problem.answer }}</p>
+              </div>
+            </div>
+        </div>
+  </div>
+</div>
+{% endfor %}
