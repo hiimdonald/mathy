@@ -45,10 +45,16 @@
           </div>
         </div>
 
-        <div class="col">
-            <div x-data="{}">
-                <button @click="$dispatch('toggle')" type="button" class="btn btn-warning">Show Answers</button>
-              </div>
+        <div class="col" >
+                <button 
+                x-data="{ open: false }" 
+                @click="$dispatch('show-answers'); open = !open" 
+                class="btn"
+                x-bind:class="open ? 'btn-danger' : 'btn-warning'"
+                x-transition.duration.500m
+                >
+                    <span x-text="open ? 'Hide Answers' : 'Show Answers'" x-transition.duration.500m></span>
+                </button>
         </div>
     </div>
 

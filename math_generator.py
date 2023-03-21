@@ -6,8 +6,8 @@ random.seed(time.time())
 
 
 def generate_addition_problem():
-    num1 = random.randint(1, 100)
-    num2 = random.randint(1, 100)
+    num1 = random.randint(1, 20)
+    num2 = random.randint(1, 20)
     problem = {
         "operand1": num1,
         "operand2": num2,

@@ -30,27 +30,20 @@
           </tr>
           <tr>
             <td td class="text-center" scope="col" colspan="3" width="20">
-                <input type="text" class="form-control" id="validationDefault05" required>
+                <input type="text" class="form-control" id="answer-box" required>
           </td>
         </tr>
         </tbody>
       </table>
     </div>
 
-
-    
-        <div x-data="{ isOpen: false }">
-            <!-- this component can be shown/hidden using a `toggle` event  -->
-            <div
-              x-show="isOpen"
-              x-on:toggle.window="isOpen = !isOpen"
-              role="alert"
-              >     
-              <div class="card-footer text-muted">                    
+        <!-- Show/Hide Answer. Toggle button on addition.html -->
+        <div x-data="{ open: false }" @show-answers.window="open = !open">  
+            <div x-show="open" x-transition class="card-footer text-muted m-0 p-0">                    
                 <p class="card-text text-center">{{ problem.answer }}</p>
-              </div>
             </div>
         </div>
+        
   </div>
 </div>
 {% endfor %}
