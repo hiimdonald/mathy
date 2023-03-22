@@ -29,8 +29,16 @@
             </td>
           </tr>
           <tr>
-            <td td class="text-center" scope="col" colspan="3" width="20">
-                <input type="text" class="form-control" id="answer-box" required>
+            <td class="text-end" scope="col" colspan="3" width="20">
+                <div x-data='{value: ""}'>
+                    
+                    <input id='answer' name='answer' type='text' class="form-control text-end" 
+                    x-model="value" 
+                    x-bind:class="value == {{ problem.answer }} ? 'border-success' 
+                    : (value == '' ? 'border-dark' : 'border-danger')"
+                    />
+                </div>
+                
           </td>
         </tr>
         </tbody>

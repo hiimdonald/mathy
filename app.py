@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request
 from flask_htmx import HTMX
+from flask_wtf import FlaskForm
+
 from math_generator import *
 
 app = Flask(__name__)
