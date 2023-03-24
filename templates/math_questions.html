@@ -1,0 +1,111 @@
+{% if request.path != url_for('divide') %}
+
+  {% for i, problem in enumerate(problems) %}
+  <!-- <div class="col-2 col-sm-2 col-md-4 col-lg-1"> -->
+  <div class="col g-2">
+    <div class="card x-cloak" style="width: 8rem">
+      <div class="card-header fw-bold"># {{ i + 1 }}</div>
+      <div class="card-body mx-auto pb-0 pt-2">
+        <table class="table table-borderless table-sm d-flex">
+            <tr>
+              <td scope="col"></td>
+              <td scope="col" class="text-end" width="40">
+                <p class="card-text">{{ problem.operand1 }}</p>
+              </td>
+              <td scope="col"></td>
+            </tr>
+            <tr>
+              <td scope="col" class="text-end pl-2" cope="col" width="10">
+                {{ problem.operator }}
+              </td>
+              <td scope="col" class="text-end" scope="col">
+                <p class="card-text">{{ problem.operand2 }}</p>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-center" scope="col" colspan="3" width="20">
+                <hr width="60" class="border border-primary border-2 opacity-100 m-0 p-0"/>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-end" scope="col" colspan="3" width="20">
+                  <div x-data='{value: ""}'>
+                      
+                      <input id='answer' name='answer' type='text' class="form-control text-end border-secondary border-2" 
+                      x-model="value" 
+                      x-bind:class="value == {{ problem.answer }} ? 'border-success border-2' 
+                      : (value == '' ? 'border-secondary border-2' : 'border-danger border-2')"
+                      />
+                  </div>
+                  
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
+          <!-- Show/Hide Answer. Toggle button on addition.html -->
+          <div x-data="{ open: false }" @show-answers.window="open = !open">  
+              <div x-show="open" x-transition class="card-footer text-muted m-0 p-0 x-cloak ">                    
+                  <p class="card-text text-center">{{ problem.answer }}</p>
+              </div>
+          </div>
+          
+    </div>
+  </div>
+  {% endfor %}
+
+ <!-- division -->
+ {% else %}
+   {% for i, problem in enumerate(problems) %}
+   <div class="col g-2">
+     <div class="card h-100 w-100 x-cloak">
+       <div class="card-header fw-bold">{{ i + 1 }}</div>
+       <div class="card-body px-0 pb-2">
+         <table class="table table-borderless table-sm d-flex align-middle">
+           <tbody>
+             <tr>
+               <td width="40">
+                 <p class="card-text text-end">{{ problem.operand1 }}</p>
+               </td>
+               <td width="5">
+                 <p class="card-text text-end">{{ problem.operator }}</p>
+               </td>
+               <td width="30">
+                 <p class="card-text text-start">{{ problem.operand2 }}</p>
+               </td>
+               <td width="5">
+                 <p class="card-text">=</p>
+               </td>
+               
+                <td class="text-end" scope="col" colspan="3" width="33%">
+                    <div x-data='{value: ""}'>
+                        
+                        <input id='answer' name='answer' type='text' class="form-control text-end border-secondary border-2" 
+                        x-model="value" 
+                        x-bind:class="value == {{ problem.answer }} ? 'border-success border-2' 
+                        : (value == '' ? 'border-secondary border-2' : 'border-danger border-2')"
+                        />
+                    </div>
+                    
+              </td>
+            </tr>
+             
+           </tbody>
+         </table>
+       </div>
+
+        <!-- Show/Hide Answer. Toggle button on problems2.html -->
+        <div x-data="{ open: false }" @show-answers.window="open = !open">  
+          <div x-show="open" x-transition class="card-footer text-muted m-0 p-0 x-cloak">                    
+              <p class="card-text text-center">{{ problem.answer|int  }}</p>
+          </div>
+        </div>
+
+
+     </div>
+   </div>
+   {% endfor %}
+ {% endif %}
+</div>
+

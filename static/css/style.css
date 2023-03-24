@@ -5,3 +5,13 @@
     break-after: page;
   }
 }
+
+[x-cloak] { display: none !important; }
+
+.problems-test {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 11rem);
+  justify-content: center;
+  grid-gap: 10px;
+}

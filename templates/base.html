@@ -24,10 +24,10 @@
               <a href="{{ url_for('home') }}" class="nav-link{% if request.path == url_for('home') %} active{% endif %}" aria-current="page">Home</a>
             </li>
             <li class="nav-item">
-              <a href="{{ url_for('addition') }}" class="nav-link{% if request.path == url_for('addition') %} active{% endif %}">Addition</a>
+              <a href="{{ url_for('add') }}" class="nav-link{% if request.path == url_for('add') %} active{% endif %}">Addition</a>
             </li>
             <li class="nav-item">
-                <a href="{{ url_for('multiplication') }}" class="nav-link{% if request.path == url_for('multiplication') %} active{% endif %}">Multiplication</a>
+                <a href="{{ url_for('multiply') }}" class="nav-link{% if request.path == url_for('multiply') %} active{% endif %}">Multiplication</a>
             </li>
             <li class="nav-item">
                 <a href="{{ url_for('division') }}" class="nav-link{% if request.path == url_for('division') %} active{% endif %}">Division</a>

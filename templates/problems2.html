@@ -1,0 +1,41 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container pb-1">
+  
+  
+  <div class="row g-2 d-print-none justify-content-center">
+    <div class="col-3">
+      <div class="input-group mb-3 px-2">
+        <label class="input-group-text h1" for="questionCount">Number of Questions:</label>
+        <select name="count" class="form-select w-25 h1" id="questionCount" hx-trigger="change" hx-get="/{{ request.url_rule.endpoint }}" hx-target="#problems">
+            <option value="20">20</option>
+            <option value="40">40</option>
+            <option value="60">60</option>
+            <option value="80">80</option>
+            <option value="100">100</option>
+        </select>
+      </div>
+    </div>
+
+      <div class="col-3">
+        <button 
+        x-data="{ open: false }" 
+        @click="$dispatch('show-answers'); open = !open" 
+        class="btn"
+        x-bind:class="open ? 'btn-danger' : 'btn-warning'"
+        x-transition.duration.500m
+        >
+        <span x-text="open ? 'Hide Answers' : 'Show Answers'" x-transition.duration.500m></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+<div class="container problems-test" id="problems">
+  <!-- <div class="row align-items-start" id="problems"> -->
+    {% include 'math_questions.html' %}
+  </div>
+  <!-- </div> -->
+
+</div>
+
+{% endblock %}

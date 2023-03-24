@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request
 from flask_htmx import HTMX
-from flask_wtf import FlaskForm
 
 from math_generator import *
 
@@ -48,10 +47,31 @@ def add():
     if htmx:
         prob_count = int(request.args.get('count'))
         problems = [generate_addition_problem() for _ in range(prob_count)]
-        return render_template('add_problems.html', problems=problems, enumerate=enumerate)
+        return render_template('math_questions.html', problems=problems, enumerate=enumerate)
     else:
         problems = [generate_addition_problem() for _ in range(20)]
-        return render_template('addition.html', problems=problems, enumerate=enumerate)
+        return render_template('problems2.html', problems=problems, enumerate=enumerate)
+    
+@app.get('/multiply')
+def multiply():
+    if htmx:
+        prob_count = int(request.args.get('count'))
+        problems = [generate_multiplication_problem() for _ in range(prob_count)]
+        return render_template('math_questions.html', problems=problems, enumerate=enumerate)
+    else:
+        problems = [generate_multiplication_problem() for _ in range(20)]
+        return render_template('problems2.html', problems=problems, enumerate=enumerate)
+
+@app.get('/divide')
+def divide():
+    if htmx:
+        prob_count = int(request.args.get('count'))
+        problems = [generate_division_problem() for _ in range(prob_count)]
+        return render_template('math_questions.html', problems=problems, enumerate=enumerate)
+    else:
+        problems = [generate_division_problem() for _ in range(20)]
+        return render_template('problems2.html', problems=problems, enumerate=enumerate)
+
 
 app.get('/problems')
 def problems():
@@ -62,4 +82,4 @@ def problems():
 
 
 if __name__ == '__main__':
-    app.run(port=3000, debug=True)
+    app.run(port=8000, debug=True)
