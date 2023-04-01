@@ -51,7 +51,12 @@ def add():
     else:
         problems = [generate_addition_problem() for _ in range(20)]
         return render_template('problems2.html', problems=problems, enumerate=enumerate)
-    
+
+@app.get('/addition-quiz')
+def addition_quiz():
+    return render_template('add_quiz.html')
+
+
 @app.get('/multiply')
 def multiply():
     if htmx:

@@ -23,8 +23,16 @@
             <li class="nav-item">
               <a href="{{ url_for('home') }}" class="nav-link{% if request.path == url_for('home') %} active{% endif %}" aria-current="page">Home</a>
             </li>
-            <li class="nav-item">
-              <a href="{{ url_for('add') }}" class="nav-link{% if request.path == url_for('add') %} active{% endif %}">Addition</a>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Addition
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="{{ url_for('add') }}">Problem Sheet</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('addition_quiz') }}"">Quiz</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Printable Worksheets</a></li>
+              </ul>
             </li>
             <li class="nav-item">
                 <a href="{{ url_for('multiply') }}" class="nav-link{% if request.path == url_for('multiply') %} active{% endif %}">Multiplication</a>
