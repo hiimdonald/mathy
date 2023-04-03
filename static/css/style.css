@@ -17,12 +17,17 @@
   border-radius: 3px;
   margin-top: 10px;
   color: #fff;
-  transition: 3s;
-  box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.9);
+  transition: all 0.2s ease-in-out;
+  box-shadow: 2px 2px 3px 0px rgba(0, 0, 0, 0.3);
 }
 
 .options:hover{
   opacity: 0.7;
+}
+
+.options:active {
+  box-shadow: none;
+  transform: scale(0.85);
 }
 
 .wrapper{
@@ -35,10 +40,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.9);
+  /* box-shadow: 2px 2px 3px 0px rgba(0, 0, 0, 0.3); */
   font-size: 5.2vw;
   background: #fff;
-  border-radius: 3px;
+  border-color: black;
+  /* border-radius: 3px; */
   text-align: center;
   margin: 10px 10px 0px 10px;
 }
@@ -46,10 +52,57 @@
 .equation h1{
   display: inline;
   padding: 20px;
-  font-size: 2em;
+  font-size: 1em;
 }
 
 .answer-options{
   font-size: 5.2vw;
   margin-right: 10px;
 }
+
+
+/* FLASH CARDS */
+#flashcard {
+  perspective: 3000px;
+}
+
+#flashcard .card-body {
+  transition: transform 0.5s ease-in-out;
+  transform-style: preserve-3d;
+  height: 300px;
+  cursor: grab;
+}
+
+#flashcard .front,
+#flashcard .back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+#flashcard .back {
+  transform: rotateY(180deg);
+}
+
+#flashcard.flipped .card-body {
+  transform: rotateY(180deg);
+}
+
+#flashcard .card-title {
+  font-size: 5rem;
+  font-weight: bold;
+}
+
+#flashcard .btn {
+  display: block;
+  margin: 0 auto;
+  font-size: 1rem;
+}
+
+.hidden {
+  display: none;
+}
+

@@ -1,0 +1,91 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container pb-1">
+  
+  
+  <div class="row g-2 d-print-none justify-content-center">
+    <div class="col-3">
+      <div class="input-group mb-3 px-2">
+        <label class="input-group-text h1" for="questionCount">Number of Questions:</label>
+        <select name="count" class="form-select w-25 h1" id="questionCount" hx-trigger="change" hx-get="/{{ request.url_rule.endpoint }}" hx-target="#problems">
+            <option value="20">20</option>
+            <option value="40">40</option>
+            <option value="60">60</option>
+            <option value="80">80</option>
+            <option value="100">100</option>
+        </select>
+      </div>
+    </div>
+
+      <div class="col-3">
+        <button 
+        x-data="{ open: false }" 
+        @click="$dispatch('show-answers'); open = !open" 
+        class="btn"
+        x-bind:class="open ? 'btn-danger' : 'btn-warning'"
+        x-transition.duration.500m
+        >
+        <span x-text="open ? 'Hide Answers' : 'Show Answers'" x-transition.duration.500m></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+<div class="container problems-division" id="problems">
+  {% for i, problem in enumerate(problems) %}
+  <div class="col g-2">
+    <div class="card h-100 w-100 x-cloak">
+      <div class="card-header fw-bold">{{ i + 1 }}</div>
+      <div class="card-body px-0 pb-2">
+        <table class="table table-borderless table-sm d-flex align-middle px-2">
+          <tbody>
+            <tr>
+              <td width="40">
+                <p class="card-text text-end">{{ problem.operand1 }}</p>
+              </td>
+              <td width="5">
+                <p class="card-text text-end">{{ problem.operator }}</p>
+              </td>
+              <td width="30">
+                <p class="card-text text-start">{{ problem.operand2 }}</p>
+              </td>
+              <td width="5">
+                <p class="card-text">=</p>
+              </td>
+              
+               <td class="text-end" scope="col" colspan="3" width="33%">
+                   <div x-data='{value: ""}'>
+                       
+                       <input id='answer' name='answer' type='text' class="form-control text-end border-secondary border-2" 
+                       x-model="value" 
+                       x-bind:class="value == {{ problem.answer }} ? 'border-success border-2' 
+                       : (value == '' ? 'border-secondary border-2' : 'border-danger border-2')"
+                       />
+                   </div>
+                   
+             </td>
+           </tr>
+            
+          </tbody>
+        </table>
+      </div>
+
+       <!-- Show/Hide Answer. Toggle button on problems2.html -->
+       <div x-data="{ open: false }" @show-answers.window="open = !open">  
+         <div x-show="open" x-transition class="card-footer text-muted m-0 p-0 x-cloak">                    
+             <p class="card-text text-center">{{ problem.answer|int  }}</p>
+         </div>
+       </div>
+
+
+    </div>
+  </div>
+  {% endfor %}
+</div>
+  </div>
+  <!-- </div> -->
+
+</div>
+
+{% endblock %}
+
+

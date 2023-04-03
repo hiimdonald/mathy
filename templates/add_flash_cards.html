@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="text-center">Addition Flash Cards</h1>
+
+<div class="container">
+  <div class="row align-items-center">
+    <div class="col-sm-6 col-md-8 mx-auto align-content-center">
+      <div class="card border-0" id="flashcard">
+        <div class="card card-body text-center p-4 m-1 border-primary border-4 rounded-3 bg-light" id="flashcard">
+            <div class="front text-center p-4 m-1 d-flex flex-column justify-content-center align-items-center">
+                <h1 class="card-title" id="front-card">Front of Card</h1>
+              </div>
+              
+          <div class="back text-center p-4 m-1 d-flex flex-column justify-content-center align-items-center hide-answer">
+            <h1 class="card-title" id="back-card">Back of Card</h1>
+            <div class="btn-wrapper text-center d-flex justify-content-between p-3" id="">
+              <button class="btn btn-success correct-btn m-2">Correct</button>
+              <button class="btn btn-danger incorrect-btn m-2">Incorrect</button>
+            </div>
+          </div>          
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div class="col-md-4">
+          <div class="card text-white bg-success">
+            <div class="card-header fs-4 fw-semibold text-center">
+                Correct
+              </div>
+            <div>
+                <h1 class="text-center" id="correct-count">0</h1>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card text-white bg-danger">
+            <div class="card-header fs-4 fw-semibold text-center">
+                Wrong
+              </div>
+            <div>
+              <h1 class="text-center" id="incorrect-count">0</h1>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-white bg-primary">
+                <div class="card-header fs-4 fw-semibold text-center">
+                    Score
+                  </div>
+              <div>
+                <h1 class="text-center" id="score">0</h1>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="{{url_for('static', filename='js/flashcard.js')}}"></script>
+{% endblock %}

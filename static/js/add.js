@@ -4,36 +4,38 @@ const options = document.querySelectorAll(".options"),
 let answer = 0,
   numCorrect = 0,
   numWrong = 0,
+  score = 0,
   isAnswerShown = false;
 
-function generateEquation() {
-  const num1 = Math.floor(Math.random() * 13),
-    num2 = Math.floor(Math.random() * 13),
-    dummyAnswer1 = Math.floor(Math.random() * 10),
-    dummyAnswer2 = Math.floor(Math.random() * 10),
-    allAnswers = [],
-    switchAnswers = [];
-
-  answer = eval(num1 + num2);
-
-  document.getElementById("num1").innerHTML = num1;
-  document.getElementById("num2").innerHTML = num2;
-
-  allAnswers.push(answer);
-  allAnswers.push(dummyAnswer1);
-  allAnswers.push(dummyAnswer2);
-
-  for (let i = allAnswers.length; i--;) {
-    switchAnswers.push(allAnswers.splice(Math.floor(Math.random() * (i + 1)), 1)[0]);
-  };
-
-  options.forEach((option, index) => {
-    option.innerHTML = switchAnswers[index];
-    option.addEventListener("click", checkAnswer);
-  });
+  function generateEquation() {
+    const num1 = Math.floor(Math.random() * 13);
+    const num2 = Math.floor(Math.random() * 13);
+    const correctAnswer = num1 + num2;
+    
+    let allAnswers = [correctAnswer];
+    while (allAnswers.length < options.length) {
+      const newAnswer = correctAnswer + Math.floor(Math.random() * 11) - 5;
+      if (newAnswer !== correctAnswer && !allAnswers.includes(newAnswer)) {
+        allAnswers.push(newAnswer);
+      }
+    }
   
-  isAnswerShown = false;
-}
+    allAnswers = allAnswers.sort(() => Math.random() - 0.5);
+  
+    document.getElementById("num1").innerHTML = num1;
+    document.getElementById("num2").innerHTML = num2;
+    answer = correctAnswer;
+  
+    options.forEach((option, index) => {
+      option.innerHTML = allAnswers[index];
+      option.addEventListener("click", checkAnswer);
+    });
+  
+    feedback.innerHTML = "";
+    isAnswerShown = false;
+  }
+  
+  
 
 function checkAnswer(event) {
   if (isAnswerShown) {
@@ -45,10 +47,20 @@ function checkAnswer(event) {
   if (event.target.innerHTML == answer) {
     feedback.innerHTML = "Correct!";
     numCorrect++;
+    event.target.classList.add("correct");
+    setTimeout(() => {
+      event.target.classList.remove("correct");
+    }, 800);
   } else {
     feedback.innerHTML = "Try Again";
     numWrong++;
+    event.target.classList.add("incorrect");
+    setTimeout(() => {
+      event.target.classList.remove("incorrect");
+    }, 800);
   }
+
+  score = (numCorrect / (numCorrect + numWrong)) * 100;
 
   updateScore();
   showAnswer();
@@ -63,12 +75,13 @@ function showAnswer() {
     generateEquation();
     result.innerHTML = "?";
     feedback.innerHTML = "";
-  }, 1500);
+  }, 800);
 }
 
 function updateScore() {
-  document.getElementById("correct-count").innerHTML = "Number Correct: " + numCorrect;
-  document.getElementById("incorrect-count").innerHTML = "Number Wrong: " + numWrong;
+  document.getElementById("correct-count").innerHTML = numCorrect;
+  document.getElementById("incorrect-count").innerHTML = numWrong;
+  document.getElementById("score").innerHTML = Math.trunc(score) + "%";
 }
 
 generateEquation();

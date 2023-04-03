@@ -1,51 +1,65 @@
 {% extends 'base.html' %} 
 {% block content %}
 
-<h1 class="">Addition Quiz</h1>
+<h1 class="text-center">Addition Quiz</h1>
 
 <div class="wrapper">
-  <div class="equation">
-    <h1 id="num1" style="color:#FE4A49"></h1>
+  <div class="equation border border-primary border-3">
+    <h1 id="num1" style="color:#6181f8"></h1>
     <h1 style="color: #2AB7CA;">+</h1>
     <h1 id="num2" style="color: #FED766">1</h1>
     <h1 style="color: #F86624">=</h1>
     <h1 id="result" style="color: gray">?</h1>
   </div>
   <div class="answer-options">
-    <div class="options" style="background-color: #FE4A49;" onclick="checkAnswer(this)">
+    <div class="options" data-answer="false" style="background-color: #6181f8;" onclick="checkAnswer(this)">
       <h1 id="option1">1</h1>
     </div>
-    <div class="options" style="background-color: #2AB7CA;" onclick="checkAnswer(this)">
+    <div class="options" data-answer="false" style="background-color: #F86624;" onclick="checkAnswer(this)">
       <h1 id="option2">2</h1>
     </div>
-    <div class="options" style="background-color: #FED766;" onclick="checkAnswer(this)">
+    <div class="options" data-answer="false" style="background-color: #FED766;" onclick="checkAnswer(this)">
       <h1 id="option3">3</h1>
     </div>
   </div>
 </div>
 
+
 <div class="container my-5">
   <div class="row">
-    <div class="col-md-6">
-      <div class="card bg-light mb-3">
+    <div class="col-md-4">
+      <div class="card text-white bg-success border-0 mb-3">
+        <div class="card-header fs-4 fw-semibold text-center">
+          Correct
+        </div>
         <div class="card-body">
-          <h5 class="card-title">Correct Answers</h5>
-          <p class="card-text" id="correct-count">0</p>
+          <h1 class="card-text text-lg-center" id="correct-count">0</h1>
         </div>
       </div>
     </div>
-    <div class="col-md-6">
-      <div class="card bg-light mb-3">
+    <div class="col-md-4">
+      <div class="card text-white bg-danger border-0 mb-3">
+        <div class="card-header fs-4 fw-semibold text-center">
+          Incorrect
+        </div>
         <div class="card-body">
-          <h5 class="card-title">Incorrect Answers</h5>
-          <p class="card-text" id="incorrect-count">0</p>
+          <h1 class="card-text text-lg-center" id="incorrect-count">0</h1>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card text-white bg-primary border-0 mb-3">
+        <div class="card-header fs-4 fw-semibold text-center">
+          Score
+        </div>
+        <div class="card-body">
+          <h1 class="card-text text-lg-center" id="score">0</h1>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<div id="answer-feedback"></div>
 
 <script src="{{url_for('static', filename='js/add.js')}}"></script>
 {% endblock %}

@@ -56,6 +56,11 @@ def add():
 def addition_quiz():
     return render_template('add_quiz.html')
 
+@app.get('/addition-flash-cards')
+def addition_flash_cards():
+    return render_template('add_flash_cards.html')
+
+
 
 @app.get('/multiply')
 def multiply():
@@ -87,4 +92,4 @@ def problems():
 
 
 if __name__ == '__main__':
-    app.run(port=8000, debug=True)
+    app.run(port=5000, debug=True)
