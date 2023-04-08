@@ -71,8 +71,8 @@ function generateEquation() {
     back.querySelector("h1").textContent = answer;
     back.querySelector(
       "#score-buttons"
-    ).innerHTML = `<button class="btn btn-success correct-btn m-2" onclick="handleAnswer(true)"><i class="fa-solid fa-thumbs-up" style="color: #fff;"></i></button>
-    <button class="btn btn-danger incorrect-btn m-2" onclick="handleAnswer(false)"><i class="fa-solid fa-thumbs-down" style="color: #fff;"></i></button>
+    ).innerHTML = `<button class="btn btn-success correct-btn p-3 m-2" onclick="handleAnswer(true)"><i class="fa-solid fa-thumbs-up fa-xl" style="color: #fff;"></i></button>
+    <button class="btn btn-danger incorrect-btn p-3 m-2" onclick="handleAnswer(false)"><i class="fa-solid fa-thumbs-down fa-xl" style="color: #fff;"></i></button>
     `;
   }, 300);
 

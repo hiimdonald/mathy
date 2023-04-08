@@ -11,6 +11,7 @@ htmx = HTMX(app)
 def home():
     return render_template('home.html')
 
+
 @app.route('/addition',  methods=['GET', 'POST'])
 def addition():
     if request.method == 'POST':
@@ -32,6 +33,7 @@ def multiplication():
         problems = [generate_multiplication_problem() for _ in range(20)]
         return render_template('problems.html', problems=problems, enumerate=enumerate)
 
+
 @app.route('/division', methods=['GET', 'POST'])
 def division():
     if request.method == 'POST':
@@ -41,6 +43,7 @@ def division():
     else:
         problems = [generate_division_problem() for _ in range(20)]
         return render_template('problems.html', problems=problems, enumerate=enumerate)
+
 
 @app.get('/add')
 def add():
@@ -52,30 +55,38 @@ def add():
         problems = [generate_addition_problem() for _ in range(20)]
         return render_template('problems2.html', problems=problems, enumerate=enumerate)
 
+
 @app.get('/addition-quiz')
 def addition_quiz():
     return render_template('add_quiz.html')
 
+
 @app.get('/addition-flash-cards')
 def addition_flash_cards():
     return render_template('add_flash_cards.html')
+
 
 @app.get('/flash-card')
 def flash_card():
     return render_template('flash_card.html')
 
 
-
-
 @app.get('/multiply')
 def multiply():
     if htmx:
         prob_count = int(request.args.get('count'))
-        problems = [generate_multiplication_problem() for _ in range(prob_count)]
+        problems = [generate_multiplication_problem()
+                    for _ in range(prob_count)]
         return render_template('math_questions.html', problems=problems, enumerate=enumerate)
     else:
         problems = [generate_multiplication_problem() for _ in range(20)]
         return render_template('problems2.html', problems=problems, enumerate=enumerate)
+
+
+@app.get('/quiz')
+def math_quiz():
+    return render_template('math_quiz.html')
+
 
 @app.route('/multiplication_flashcards')
 def multiplication_flashcards():
@@ -94,12 +105,13 @@ def divide():
 
 
 app.get('/problems')
+
+
 def problems():
     count = request.args.get('count')
     problems = [generate_addition_problem() for _ in range(count)]
     return render_template('add_problems.html', problems=problems, enumerate=enumerate)
 
 
-
 if __name__ == '__main__':
-    app.run(port=5000, debug=True)
+    app.run(port=8000, debug=True)

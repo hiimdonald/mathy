@@ -1,5 +1,6 @@
-[x-cloak] { display: none !important; }
-
+[x-cloak] {
+  display: none !important;
+}
 
 .problems-test {
   width: 100%;
@@ -9,7 +10,7 @@
   grid-gap: 10px;
 }
 
-.options{
+.options {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,7 +22,7 @@
   box-shadow: 2px 2px 3px 0px rgba(0, 0, 0, 0.3);
 }
 
-.options:hover{
+.options:hover {
   opacity: 0.7;
 }
 
@@ -30,13 +31,25 @@
   transform: scale(0.85);
 }
 
-.wrapper{
+.val1 {
+  background-color: #6181f8;
+}
+
+.val2 {
+  background-color: #f86624;
+}
+
+.val3 {
+  background-color: #fed766;
+}
+
+.wrapper {
   display: grid;
   grid-template-columns: 80% 20%;
   height: 100%;
 }
 
-.equation{
+.equation {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -49,14 +62,21 @@
   margin: 10px 10px 0px 10px;
 }
 
-.equation h1{
+.equation h1 {
   display: inline;
   padding: 20px;
   font-size: 1em;
 }
 
-.answer-options{
+.answer-options {
   font-size: 5.2vw;
   margin-right: 10px;
 }
 
+.equation-answer {
+  color: grey;
+}
+
+.correct-answer {
+  color: green;
+}

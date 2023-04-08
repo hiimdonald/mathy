@@ -1,0 +1,56 @@
+{% extends 'base.html' %} {% block content %}
+
+<h1 class="text-center">Addition Quiz</h1>
+
+<div class="wrapper pb-3">
+  <div class="equation border border-primary border-3">
+    <h1 id="num1" style="color: #6181f8">1</h1>
+    <h1 style="color: #2ab7ca">+</h1>
+    <h1 id="num2" style="color: #fed766">1</h1>
+    <h1 style="color: #f86624">=</h1>
+    <h1 class="equation-answer" id="result">?</h1>
+  </div>
+  <div class="answer-options">
+    <div class="options val1" data-answer="false">
+      <h1 id="option1">1</h1>
+    </div>
+    <div class="options val2" data-answer="false">
+      <h1 id="option2">2</h1>
+    </div>
+    <div class="options val3" data-answer="false">
+      <h1 id="option3">3</h1>
+    </div>
+  </div>
+</div>
+
+<div class="container my-5">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card text-white bg-success border-0 mb-3">
+        <div class="card-header fs-4 fw-semibold text-center">Correct</div>
+        <div class="card-body">
+          <h1 class="card-text text-lg-center" id="correct-count">0</h1>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card text-white bg-danger border-0 mb-3">
+        <div class="card-header fs-4 fw-semibold text-center">Incorrect</div>
+        <div class="card-body">
+          <h1 class="card-text text-lg-center" id="incorrect-count">0</h1>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card text-white bg-primary border-0 mb-3">
+        <div class="card-header fs-4 fw-semibold text-center">Score</div>
+        <div class="card-body">
+          <h1 class="card-text text-lg-center" id="score">0</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="{{url_for('static', filename='js/multiplication_quiz.js')}}"></script>
+{% endblock %}
