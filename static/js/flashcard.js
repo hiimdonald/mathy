@@ -29,8 +29,6 @@ function handleAnswer(isCorrect) {
   score.textContent = scorePercent.toFixed(0) + "%";
 }
 
-
-
 flashcard.addEventListener("click", flipCard);
 
 function generateProblem() {

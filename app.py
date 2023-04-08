@@ -60,6 +60,11 @@ def addition_quiz():
 def addition_flash_cards():
     return render_template('add_flash_cards.html')
 
+@app.get('/flash-card')
+def flash_card():
+    return render_template('flash_card.html')
+
+
 
 
 @app.get('/multiply')
@@ -71,6 +76,11 @@ def multiply():
     else:
         problems = [generate_multiplication_problem() for _ in range(20)]
         return render_template('problems2.html', problems=problems, enumerate=enumerate)
+
+@app.route('/multiplication_flashcards')
+def multiplication_flashcards():
+    return render_template('multiplication_flashcards.html')
+
 
 @app.get('/divide')
 def divide():

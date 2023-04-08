@@ -1,0 +1,89 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="row">
+  <div class="col">
+    <h1 class="text-center">Multiplication Flash Cards</h1>
+    <div class="d-flex justify-content-center flex-wrap my-3">
+      {% for num in range(1, 13) %}
+      <button class="btn btn-primary m-1" onclick="updateCards({{ num }})">
+        {{ num }}
+      </button>
+      {% endfor %}
+    </div>
+
+    <div class="d-flex justify-content-center my-5">
+      <div class="card border-0" id="flashcard">
+        <div
+          class="card card-body text-center p-4 m-1 border-primary border-4 rounded-3 bg-light"
+        >
+          <div class="front text-center p-4 m-1 d-flex flex-column">
+            <h1 class="card-title" id="front-card">Front of Card</h1>
+          </div>
+
+          <div
+            class="back text-center p-4 m-1 d-flex flex-column justify-content-center align-items-center hide-answer"
+          >
+            <h1 class="card-title" id="back-card">Back of Card</h1>
+            <div
+              class="btn-wrapper text-center d-flex justify-content-between p-3"
+              id=""
+            >
+              <button class="btn btn-success correct-btn m-2">Correct</button>
+              <button class="btn btn-danger incorrect-btn m-2">
+                Incorrect
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-3">
+    <div class="timer-container text-center pb-5">
+      <h1 class="timer">00:00</h1>
+
+      <div class="btn-group" role="group">
+        <button type="button" class="btn btn-success" id="start-button">
+          Start
+        </button>
+        <button type="button" class="btn btn-danger" id="stop-button">
+          Stop
+        </button>
+        <button type="button" class="btn btn-primary" id="reset-button">
+          Reset
+        </button>
+      </div>
+    </div>
+
+    <table class="table table-sm table-striped text-center">
+      <thead>
+        <tr>
+          <th class="table-dark">#</th>
+          <th class="table-success px-2">
+            <i class="fa-solid fa-thumbs-up"></i>
+          </th>
+          <th class="table-danger px-2">
+            <i class="fa-solid fa-thumbs-down"></i>
+          </th>
+          <th class="table-info px-2"><i class="fa-solid fa-flag"></i></th>
+          <th class="table-warning px-3"><i class="fa-solid fa-star"></i></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for num in range(1, 13) %}
+        <tr>
+          <td class="table-dark">{{ num }}</td>
+          <td class="table-success" id="correct-count-{{num}}">0</td>
+          <td class="table-danger" id="incorrect-count-{{num}}">0</td>
+          <td class="table-info" id="total-count-{{num}}">0</td>
+          <td class="table-warning" id="score-{{num}}">0%</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <script src="{{url_for('static', filename='js/multiplication_flashcard.js')}}"></script>
+  <script src="{{url_for('static', filename='js/stop_watch.js')}}"></script>
+  {% endblock %}
+</div>

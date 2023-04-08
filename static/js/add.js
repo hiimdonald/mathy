@@ -1,5 +1,4 @@
-const options = document.querySelectorAll(".options"),
-  feedback = document.getElementById("answer-feedback");
+const options = document.querySelectorAll(".options");
 
 let answer = 0,
   numCorrect = 0,
@@ -31,7 +30,6 @@ let answer = 0,
       option.addEventListener("click", checkAnswer);
     });
   
-    feedback.innerHTML = "";
     isAnswerShown = false;
   }
   
@@ -40,19 +38,16 @@ let answer = 0,
 function checkAnswer(event) {
   if (isAnswerShown) {
     generateEquation();
-    feedback.innerHTML = "";
     return;
   }
 
   if (event.target.innerHTML == answer) {
-    feedback.innerHTML = "Correct!";
     numCorrect++;
     event.target.classList.add("correct");
     setTimeout(() => {
       event.target.classList.remove("correct");
     }, 800);
   } else {
-    feedback.innerHTML = "Try Again";
     numWrong++;
     event.target.classList.add("incorrect");
     setTimeout(() => {
@@ -69,7 +64,6 @@ function checkAnswer(event) {
 function showAnswer() {
   const result = document.getElementById("result");
   result.innerHTML = answer;
-  feedback.innerHTML = "The correct answer is shown.";
   isAnswerShown = true;
   setTimeout(() => {
     generateEquation();
