@@ -77,6 +77,22 @@
   color: grey;
 }
 
-.correct-answer {
-  color: green;
+#worksheet-container {
+  margin-top: 20px;
+}
+
+.problem {
+  font-size: 48pt;
+  padding: 20px;
+  display: inline-block;
+  width: 150px;
+  text-align: center;
+}
+
+@media print {
+  .col:nth-child(36n)::after {
+    content: "";
+    display: block;
+    page-break-after: always;
+  }
 }

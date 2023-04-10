@@ -22,7 +22,7 @@ function handleAnswer(isCorrect) {
     flipCard();
     setTimeout(() => {
       generateEquation();
-    }, 200);
+    }, 100);
   } else {
     generateEquation();
   }

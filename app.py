@@ -71,6 +71,11 @@ def flash_card():
     return render_template('flash_card.html')
 
 
+@app.get('/add-problem-sheet')
+def add_problem_sheet():
+    return render_template('add_problem_sheet.html')
+
+
 @app.get('/multiply')
 def multiply():
     if htmx:
@@ -91,6 +96,11 @@ def math_quiz():
 @app.route('/multiplication_flashcards')
 def multiplication_flashcards():
     return render_template('multiplication_flashcards.html')
+
+
+@app.get('/multiplication-worksheet')
+def multiplication_worksheet():
+    return render_template('multiplication_worksheet.html')
 
 
 @app.get('/divide')
